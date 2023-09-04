@@ -5,20 +5,9 @@ import { getRandomFact } from './services/facts'
 const SEGUNDA_API_IMAGE = ('https://cataas.com/cat/says/hello')
 const CAT_PREFIX_IMAGE = 'https://cataas.com'
 
-
-function App() {
-  const [fact, setFact] = useState()
+function useCatImage ( {fact} ) {
   const [imageUrl, setImageUrl] = useState()
 
-
-
-
-// PARA RECUPERAR O ACTUALIZAR EL FACT DEL GATO
-  useEffect (()=>{
-    getRandomFact().then(newfact => setFact(newfact))
-  },[])
-  
-// PARA ACTUALIZAR LA IMAGEN DEL GATO
   useEffect (()=>{
       if (!fact) return
 
@@ -33,8 +22,24 @@ function App() {
         const imageUrl = URL.createObjectURL(blob)
         setImageUrl(imageUrl)
       })
-  }, [fact])
-       
+  }, [fact]) 
+
+    return {imageUrl}
+}  // FUNCION "CUSTOMHOOKS" PARA ACTUALIZAR LA IMAGEN DEL GATO
+
+
+function App() {
+  const [fact, setFact] = useState()
+  const { imageUrl }= useCatImage ( {fact} )
+ 
+
+
+
+
+// PARA RECUPERAR O ACTUALIZAR EL FACT DEL GATO
+  useEffect (()=>{
+    getRandomFact().then(newfact => setFact(newfact))
+  },[])
   
 
 const handleClick = async () => {
