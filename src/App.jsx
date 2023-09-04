@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { getRandomFact } from './services/facts'
 
-const PRIMER_API_RANDOM_FACT = ('https://catfact.ninja/fact')  
 const SEGUNDA_API_IMAGE = ('https://cataas.com/cat/says/hello')
 const CAT_PREFIX_IMAGE = 'https://cataas.com'
 
@@ -10,15 +10,13 @@ function App() {
   const [fact, setFact] = useState()
   const [imageUrl, setImageUrl] = useState()
 
+
+
+
 // PARA RECUPERAR O ACTUALIZAR EL FACT DEL GATO
   useEffect (()=>{
-    fetch(PRIMER_API_RANDOM_FACT)
-    .then(res => res.json())
-    .then(data => {
-      const {fact} = data
-      setFact(fact)
-      })
-  }, [])
+    getRandomFact().then(newfact => setFact(newfact))
+  },[])
   
 // PARA ACTUALIZAR LA IMAGEN DEL GATO
   useEffect (()=>{
@@ -39,13 +37,9 @@ function App() {
        
   
 
-const handleClick = () => {
-    fetch(PRIMER_API_RANDOM_FACT)
-    .then(res => res.json())
-    .then(data => {
-      const {fact} = data
-      setFact(fact)
-      })
+const handleClick = async () => {
+    const newFact = await getRandomFact()
+    setFact(newFact)
   }
 
   return (
