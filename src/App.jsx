@@ -1,41 +1,18 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { getRandomFact } from './services/facts'
+import { useCatImage } from './hooks/useCatImage'
 
 const SEGUNDA_API_IMAGE = ('https://cataas.com/cat/says/hello')
 const CAT_PREFIX_IMAGE = 'https://cataas.com'
 
-function useCatImage ( {fact} ) {
-  const [imageUrl, setImageUrl] = useState()
-
-  useEffect (()=>{
-      if (!fact) return
-
-      const threeWords = fact.split(' ',3)
-      console.log(threeWords)
-
-      const wordsUrl = threeWords.join(' ')
-
-      fetch(`https://cataas.com/cat/says/${wordsUrl}?size=50&color=red`)
-      .then(res => res.blob())
-      .then(blob => {
-        const imageUrl = URL.createObjectURL(blob)
-        setImageUrl(imageUrl)
-      })
-  }, [fact]) 
-
-    return {imageUrl}
-}  // FUNCION "CUSTOMHOOKS" PARA ACTUALIZAR LA IMAGEN DEL GATO
+// FUNCION "CUSTOMHOOKS" PARA ACTUALIZAR LA IMAGEN DEL GATO
 
 
 function App() {
   const [fact, setFact] = useState()
   const { imageUrl }= useCatImage ( {fact} )
  
-
-
-
-
 // PARA RECUPERAR O ACTUALIZAR EL FACT DEL GATO
   useEffect (()=>{
     getRandomFact().then(newfact => setFact(newfact))
