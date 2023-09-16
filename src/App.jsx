@@ -27,7 +27,7 @@ const handleClick = async () => {
       <h3 className='card-title'>App de gatitos</h3>
       {fact && <p className='card-body'>{fact}</p>}
       <button onClick={handleClick} className='btn btn-secondary mb-2'>Get a new fact</button>
-      {imageUrl && <img src={`${imageUrl}`} alt={`Image extracted using the threewords for ${fact}`} />}
+      {imageUrl && <img class="h-100" src={`${imageUrl}`} alt={`Image extracted using the threewords for ${fact}`} />}
     </main>
   )
 }
