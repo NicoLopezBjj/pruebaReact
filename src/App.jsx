@@ -6,8 +6,6 @@ import { useCatImage } from './hooks/useCatImage'
 const SEGUNDA_API_IMAGE = ('https://cataas.com/cat/says/hello')
 const CAT_PREFIX_IMAGE = 'https://cataas.com'
 
-// FUNCION "CUSTOMHOOKS" PARA ACTUALIZAR LA IMAGEN DEL GATO
-
 
 function App() {
   const [fact, setFact] = useState()
@@ -25,7 +23,7 @@ const handleClick = async () => {
   }
 
   return (
-    <main className='container card'>
+    <main className='container card h-100'>
       <h3 className='card-title'>App de gatitos</h3>
       {fact && <p className='card-body'>{fact}</p>}
       <button onClick={handleClick} className='btn btn-secondary mb-2'>Get a new fact</button>

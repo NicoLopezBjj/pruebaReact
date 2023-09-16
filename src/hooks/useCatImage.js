@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 
+// FUNCION "CUSTOMHOOKS" PARA ACTUALIZAR LA IMAGEN DEL GATO
+
 export function useCatImage ( {fact} ) {
   const [imageUrl, setImageUrl] = useState()
 
