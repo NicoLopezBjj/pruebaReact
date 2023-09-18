@@ -1,7 +1,13 @@
+body{
+    background-color: rgba(200, 162, 197, 1);
+    color: rgba(200, 162, 197, 1);
+}
+
 main{
     display: flex;
     flex-direction: column;
     place-items: center;
+    background-color: rgba(180, 142 167, 1) !important;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -9,9 +15,11 @@ h3{
     padding-top: 1rem ;
 }
 
-img{
-    height: 100vh;
+.size{
+    height: 90vh !important;
 }
+
+
 
 
 
